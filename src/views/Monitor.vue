@@ -1,0 +1,57 @@
+<template>
+    <div style='width:100%'>
+        <h1>{{country}}</h1>
+        <div class="datas">
+            <data-used type='Casos' :value='data.cases'/>
+            <data-used type='Casos Hoje' :value='data.todayCases' :globalValue='data.cases'/>
+            <data-used type='Mortes' :value='data.deaths'/>
+            <data-used type='Mortes Hoje' :value='data.todayDeaths' :globalValue='data.deaths'/>
+            <data-used type='Recuperado' :value='data.recovered'/>
+        </div>
+    </div>
+</template>
+
+<script>
+import {covidAPI} from '../services/covidAPI'
+import data from '../components/Data'
+
+export default {
+    components:{'data-used': data},
+    data(){
+        return{
+            country: this.$route.params.country,
+            data: {"country":"Brazil","cases":529,"todayCases":0,"deaths":4,"todayDeaths":0,"recovered":2,"active":523,"critical":18,"casesPerOneMillion":2},
+        }
+    },
+    mounted(){
+        this.getData();
+        setInterval(()=>{
+            this.getData()
+        }, 10000)
+    },
+    methods:{
+        async getData(){
+            await covidAPI.get(`/countries/${this.country}`)
+                            .then(resp=>{
+                                this.data = resp.data
+                                console.log(resp.data)
+                            })
+        }
+    }
+
+}
+</script>
+
+<style>
+    .datas{
+        margin-top: 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;   
+        justify-content:space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+</style>
