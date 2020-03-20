@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.ba785581017d495e2c100285c9c31116.js"
+  "/precache-manifest.d7cc257f5e3451db41465387c5ba8382.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "covid-monitor"});

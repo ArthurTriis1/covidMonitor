@@ -20,7 +20,7 @@ export default {
     data(){
         return{
             country: this.$route.params.country,
-            data: {"country":"Brazil","cases":529,"todayCases":0,"deaths":4,"todayDeaths":0,"recovered":2,"active":523,"critical":18,"casesPerOneMillion":2},
+            data: {"country":"Carregando...","cases":'Carregando...',todayCases:'Carregando...',"deaths":'Carregando...',"todayDeaths":'Carregando...',"recovered":'Carregando...',"active":'Carregando...',"critical":'Carregando...',"casesPerOneMillion":'Carregando...'},
         }
     },
     mounted(){

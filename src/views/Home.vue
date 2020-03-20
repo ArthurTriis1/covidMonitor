@@ -1,11 +1,14 @@
 <template>
   <div class='display'>
       <h1>Monitor de Covid19 em Vue</h1>
-      <select v-model="selected" class="comboBox">
+      <h2>{{valueDefault}}</h2>
+      <select v-model="selected" class="comboBox" >
         <option v-for='pais in paises' :key='pais' :value="pais">{{pais}}</option>
       </select>
       
-      <router-link :to="'/data/'+ selected" class="btMonitorar">Monitorar</router-link>
+
+      <router-link v-if="selected"  :to="'/data/'+ selected" class="btMonitorar">Monitorar</router-link>
+      
   </div>
 </template>
 
@@ -17,12 +20,14 @@ export default {
     data(){
         return{
             paises: '',
-            selected: ''
+            selected: '',
+            valueDefault: 'Loading...'
         }
     },
     mounted(){
         covidAPI.get('/countries').then(resp =>{
-           this.paises = resp.data.map(item => {return item.country})
+           this.paises = resp.data.map(item => {return item.country}).sort()
+           this.valueDefault = "Selecione um país:"
         })
     }
 }
@@ -33,9 +38,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
+    width: 100%;
   }
   .comboBox{
-    min-width: 500px;
+    min-width: 50%;
+    max-width: 90%;
     height: 50px;
     margin: 30px;
     border-radius: 25px;
@@ -72,5 +80,13 @@ export default {
     background-color: rgb(52, 96, 134);
     padding: 15px
     
+  }
+  h2{
+    margin: 10px 0 0px 0;
+  }
+  h1{
+    padding: 0 10px;
+    margin: 0, 10px;
+
   }
 </style>
