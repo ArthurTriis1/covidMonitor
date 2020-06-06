@@ -31,7 +31,7 @@ export default {
     },
     methods:{
         async getData(){
-            await covidAPI.get(`/countries/${this.country}`)
+            await covidAPI.get(`/v2/countries/${this.country}`)
                             .then(resp=>{
                                 this.data = resp.data
                                 console.log(resp.data)

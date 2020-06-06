@@ -25,7 +25,7 @@ export default {
         }
     },
     mounted(){
-        covidAPI.get('/countries').then(resp =>{
+        covidAPI.get('/v2/countries').then(resp =>{
            this.paises = resp.data.map(item => {return item.country}).sort()
            this.valueDefault = "Selecione um país:"
         })
