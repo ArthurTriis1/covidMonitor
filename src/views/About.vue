@@ -12,10 +12,17 @@
 </template>
 
 <style scoped>
+  .about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .textAbout{
     margin-top: 30px;
     text-align: justify;
     padding: 15px;
+    width: 80%;
   }
 
   img{

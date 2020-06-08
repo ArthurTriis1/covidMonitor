@@ -1,6 +1,7 @@
 <template>
     <div style='width:100%'>
         <h1>{{country}}</h1>
+        <h4>Atualizado em: {{updated}}</h4>
         <div class="datas">
             <data-used type='Casos' :value='data.cases'/>
             <data-used type='Casos Hoje' :value='data.todayCases' :globalValue='data.cases'/>
@@ -21,6 +22,7 @@ export default {
         return{
             country: this.$route.params.country,
             data: {"country":"Carregando...","cases":'Carregando...',todayCases:'Carregando...',"deaths":'Carregando...',"todayDeaths":'Carregando...',"recovered":'Carregando...',"active":'Carregando...',"critical":'Carregando...',"casesPerOneMillion":'Carregando...'},
+            updated: "Carregando..."
         }
     },
     mounted(){
@@ -34,7 +36,9 @@ export default {
             await covidAPI.get(`/v2/countries/${this.country}`)
                             .then(resp=>{
                                 this.data = resp.data
-                                console.log(resp.data)
+                                const date = new Date(resp.data.updated);
+                                this.updated = date.getDate() + "/" + date.getMonth() + "-" + date.getHours() +":"+ date.getMinutes()
+
                             })
         }
     }
