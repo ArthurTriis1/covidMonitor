@@ -7,7 +7,7 @@
             <data-used type='Casos Hoje' :value='data.todayCases' :globalValue='data.cases'/>
             <data-used type='Mortes' :value='data.deaths'/>
             <data-used type='Mortes Hoje' :value='data.todayDeaths' :globalValue='data.deaths'/>
-            <data-used type='Recuperado' :value='data.recovered'/>
+            <data-used type='Recuperados' :value='data.recovered'/>
         </div>
     </div>
 </template>

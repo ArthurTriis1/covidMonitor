@@ -1,10 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <div id="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/about">Sobre</router-link>
     </div>
     <router-view/>
+    <h4 class="info">Os dados apresentados podem estar desatualizados em relação aos dados oficiais de cada país</h4>
   </div>
 </template>
 
@@ -29,7 +30,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 100vh;
 
 }
 
@@ -39,8 +41,7 @@ export default {
   border: 1px solid rgb(75, 129, 177);
   margin-bottom: 40px;
   margin-top: 15px;
-  height: inherit;
-
+  height:fit-content;
 }
 
 #nav a {
@@ -56,5 +57,11 @@ export default {
   background-color: rgb(75, 129, 177);
   color: #fff;
 
+}
+
+
+.info{
+  margin-top: 20px;
+  font-style: italic;
 }
 </style>

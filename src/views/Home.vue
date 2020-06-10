@@ -1,6 +1,6 @@
 <template>
   <div class='display'>
-      <h1>Monitor de Covid19 em Vue</h1>
+      <h1>Monitor de corona vírus</h1>
       <h2>{{valueDefault}}</h2>
       <select v-model="selected" class="comboBox" >
         <option v-for='pais in paises' :key='pais' :value="pais">{{pais}}</option>
